@@ -34,6 +34,7 @@
     "tsconfig.json",
     "tsconfig.*.json"
   ],
+  "experimentalTailwindcss": {},
   "experimentalSortImports": {
     "groups": [
       ["side-effect"], // 副作用导入

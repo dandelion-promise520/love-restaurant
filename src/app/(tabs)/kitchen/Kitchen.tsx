@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function Index() {
+const Kitchen = () => {
   return (
     <View
       style={{
@@ -9,7 +9,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>厨房</Text>
     </View>
   );
-}
+};
+
+export default Kitchen;

@@ -9,6 +9,7 @@
       "addWords": true
     }
   ],
+  "files": ["src/**/*.ts", "src/**/*.tsx"],
   "ignorePaths": [
     "**/node_modules/**",
     "**/build/**",
@@ -26,13 +27,16 @@
     "**/stats.html",
     ".gitignore",
     "cspell.json",
-    "commitlint.config.js",
     "biome.json",
     ".cspell",
     ".oxlintrc.json",
     ".oxfmtrc.json",
     "electron-builder.yml",
     "pnpm-lock.yaml",
-    ".env.*"
+    ".env.*",
+    "commitlint.config.js",
+    "tailwind.config.cjs",
+    "babel.config.cjs",
+    "metro.config.cjs"
   ]
 }
