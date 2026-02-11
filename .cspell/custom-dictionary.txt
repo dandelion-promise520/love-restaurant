@@ -1,0 +1,10 @@
+Consolas
+Entypo
+Hiragino
+Maru
+Meiryo
+Menlo
+Nativewind
+Segoe
+Tamagui
+unistyles
