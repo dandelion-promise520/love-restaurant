@@ -14,6 +14,7 @@ const TabsLayout = () => {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tabIconSelected,
         tabBarInactiveTintColor: Colors[colorScheme ?? "light"].tabIconDefault,
+        headerShown: false,
       }}
     >
       <Tabs.Screen

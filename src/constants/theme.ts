@@ -6,7 +6,7 @@
 import { Platform } from "react-native";
 
 const tintColorLight = "#F59E0B";
-const tintColorDark = "#fff";
+const tintColorDark = "#F59E0B";
 
 export const Colors = {
   light: {
@@ -16,14 +16,16 @@ export const Colors = {
     icon: "#6B7280",
     tabIconDefault: "#6B7280",
     tabIconSelected: tintColorLight,
+    white: "#fff",
   },
   dark: {
-    text: "#ECEDEE",
-    background: "#151718",
+    text: "#1F2937",
+    background: "#F5F5F5",
     tint: tintColorDark,
-    icon: "#9BA1A6",
-    tabIconDefault: "#9BA1A6",
+    icon: "#6B7280",
+    tabIconDefault: "#6B7280",
     tabIconSelected: tintColorDark,
+    black: "#fff",
   },
 };
 
@@ -47,7 +49,8 @@ export const Fonts = Platform.select({
   web: {
     sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
     serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
+    rounded:
+      "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
 });
