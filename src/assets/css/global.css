@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.center{
-    @apply items-center justify-center;
+.center {
+  @apply items-center justify-center;
 }
