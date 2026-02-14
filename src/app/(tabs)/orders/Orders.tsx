@@ -1,16 +1,22 @@
-import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { Colors } from "@/constants/theme";
 
 const Orders = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>订单</Text>
-    </View>
+    <SafeAreaView className="flex-1">
+      <ThemedView
+        className="flex-1 items-center justify-center"
+        lightColor={Colors["light"].background}
+        darkColor={Colors["dark"].background}
+      >
+        <ThemedText lightColor={Colors["light"].text} darkColor={Colors["dark"].text}>
+          订单
+        </ThemedText>
+      </ThemedView>
+    </SafeAreaView>
   );
 };
 
