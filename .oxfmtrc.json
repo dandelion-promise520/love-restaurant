@@ -35,15 +35,19 @@
     "tsconfig.*.json"
   ],
   "experimentalTailwindcss": {},
-  "experimentalSortImports": {
+
+  "sortImports": {
     "groups": [
-      ["side-effect"], // 副作用导入
-      ["builtin"], // Node.js 内置模块
-      ["external", "external-type"], // 外部包/类型
-      ["internal", "internal-type"], // 内部导入/类型
-      ["parent", "parent-type"], // 父目录导入
-      ["sibling", "sibling-type"], // 同级文件导入
-      ["index", "index-type"] // 索引导入
+      "type-import",
+      ["value-builtin", "value-external"],
+      "type-internal",
+      "value-internal",
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-parent", "value-sibling", "value-index"],
+      "unknown"
     ]
+  },
+  "sortPackageJson": {
+    "sortScripts": true
   }
 }
