@@ -4,6 +4,7 @@ import * as Font from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import MapleMono from "@/assets/font/MapleMono-NF-CN-Medium.ttf";
@@ -34,9 +35,11 @@ const App = () => {
 
       {/* 导航容器 */}
       <NavigationContainer>
-        <SafeAreaView style={{ flex: 1 }}>
-          <TabsLayout />
-        </SafeAreaView>
+        <GestureHandlerRootView>
+          <SafeAreaView style={{ flex: 1 }}>
+            <TabsLayout />
+          </SafeAreaView>
+        </GestureHandlerRootView>
       </NavigationContainer>
     </>
   );

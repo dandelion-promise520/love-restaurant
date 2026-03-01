@@ -23,6 +23,7 @@ export const TabsLayout = () => {
         component={Home}
         options={{
           title: "首页",
+          swipeEnabled: false,
           tabBarIcon: ({ color }) => <Entypo name="home" size={16} color={color} />,
         }}
       ></Tab.Screen>
@@ -32,6 +33,7 @@ export const TabsLayout = () => {
         options={{
           title: "厨房",
           tabBarIcon: ({ color }) => <MaterialIcons name="restaurant" size={16} color={color} />,
+          lazy: true,
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -40,6 +42,7 @@ export const TabsLayout = () => {
         options={{
           title: "订单",
           tabBarIcon: ({ color }) => <AntDesign name="unordered-list" size={16} color={color} />,
+          lazy: true,
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -48,6 +51,7 @@ export const TabsLayout = () => {
         options={{
           title: "情侣",
           tabBarIcon: ({ color }) => <AntDesign name="heart" size={16} color={color} />,
+          lazy: true,
         }}
       ></Tab.Screen>
     </Tab.Navigator>

@@ -1,6 +1,8 @@
 Consolas
 Entypo
+gorhom
 Hiragino
+legendapp
 Maru
 Meiryo
 Menlo
