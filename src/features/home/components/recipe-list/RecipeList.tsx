@@ -1,6 +1,7 @@
 import { AntDesign } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
 import { JSX } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 
 import { ThemedText, ThemedView } from "@/components";
 
@@ -35,9 +36,15 @@ export const RecipeList = ({ dishes, title }: RecipeListProps): JSX.Element => {
           <DishItem dish={item} />
 
           {/* 右侧点单按钮 */}
-          <View className="size-[25] items-center justify-center rounded-full bg-[#fbc4ab]">
+          <TouchableOpacity
+            className="size-[25] items-center justify-center rounded-full bg-[#fbc4ab]"
+            onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              console.log(item.id);
+            }}
+          >
             <AntDesign name="heart" size={8} color="#f08080" />
-          </View>
+          </TouchableOpacity>
         </ThemedView>
       )}
     />

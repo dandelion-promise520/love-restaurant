@@ -2,8 +2,8 @@ import { Image } from "expo-image";
 import { View } from "react-native";
 
 import defaultDishImage from "@/assets/images/defaultDishImage.png";
-import { ThemedText } from "@/components";
 
+import { ThemedText } from "../themed-text";
 import { DishItemProps } from "./types";
 
 export const DishItem = ({ dish }: { dish: DishItemProps }) => {

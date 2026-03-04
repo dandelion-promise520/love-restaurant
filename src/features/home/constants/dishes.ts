@@ -50,6 +50,46 @@ export const DISHES: DishItemProps[] = [
     id: "7",
     name: "还没想好",
   },
+  {
+    id: "8",
+    name: "还没想好",
+  },
+  {
+    id: "9",
+    name: "还没想好",
+  },
+  {
+    id: "10",
+    name: "还没想好",
+  },
+  {
+    id: "11",
+    name: "还没想好",
+  },
+  {
+    id: "12",
+    name: "还没想好",
+  },
+  {
+    id: "13",
+    name: "还没想好",
+  },
+  {
+    id: "14",
+    name: "还没想好",
+  },
+  {
+    id: "15",
+    name: "还没想好",
+  },
+  {
+    id: "16",
+    name: "还没想好",
+  },
+  {
+    id: "17",
+    name: "还没想好",
+  },
 ];
 
 export const CATEGORY: MenuItem[] = [
