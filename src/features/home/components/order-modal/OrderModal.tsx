@@ -18,6 +18,7 @@ export const OrderModal = () => {
   return (
     <>
       <PressableScale
+        style={{ transform: [{ translateX: "-50%" }] }}
         className="absolute bottom-[36] left-1/2 flex-row gap-[5] rounded-full bg-[#e2e5eb] p-2"
         onPress={() => {
           bottomSheetRef?.current?.snapToIndex(0);

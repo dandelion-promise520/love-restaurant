@@ -6,14 +6,15 @@ import { Colors } from "@/constants";
 import { Couple, Home, Kitchen, Orders } from "@/features";
 
 export const TabsLayout = () => {
-  const colorScheme = useColorScheme();
+  const scheme = useColorScheme();
+  const colorScheme: "light" | "dark" = scheme === "dark" ? "dark" : "light";
   const Tab = createMaterialTopTabNavigator();
 
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tabIconSelected,
-        tabBarInactiveTintColor: Colors[colorScheme ?? "light"].tabIconDefault,
+        tabBarActiveTintColor: Colors[colorScheme].tabIconSelected,
+        tabBarInactiveTintColor: Colors[colorScheme].tabIconDefault,
         tabBarIndicator: () => <></>,
       }}
       tabBarPosition="bottom"
@@ -23,7 +24,7 @@ export const TabsLayout = () => {
         component={Home}
         options={{
           title: "首页",
-          swipeEnabled: false,
+          // swipeEnabled: false,
           tabBarIcon: ({ color }) => <Entypo name="home" size={16} color={color} />,
         }}
       ></Tab.Screen>

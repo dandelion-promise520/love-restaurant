@@ -6,5 +6,5 @@ export interface PressableScaleProps {
   children: React.ReactNode;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
-  className: string | SharedValue<string | undefined> | undefined;
+  className?: string | SharedValue<string | undefined> | undefined;
 }

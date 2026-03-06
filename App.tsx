@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import MapleMono from "@/assets/font/MapleMono-NF-CN-Medium.ttf";
 import { TabsLayout } from "@/layouts";
@@ -36,9 +36,11 @@ const App = () => {
       {/* 导航容器 */}
       <NavigationContainer>
         <GestureHandlerRootView>
-          <SafeAreaView style={{ flex: 1 }}>
-            <TabsLayout />
-          </SafeAreaView>
+          <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+              <TabsLayout />
+            </SafeAreaView>
+          </SafeAreaProvider>
         </GestureHandlerRootView>
       </NavigationContainer>
     </>
