@@ -51,6 +51,7 @@
   "devDependencies": {
     "@types/react": "~19.2.10",
     "commitizen": "^4.3.1",
+    "cspell": "^10.0.0",
     "cz-git": "^1.12.0",
     "husky": "^9.1.7",
     "oxfmt": "^0.35.0",
