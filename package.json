@@ -1,0 +1,25 @@
+{
+  "name": "love-restaurant",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:app": "turbo dev --filter=@love-restaurant/app",
+    "dev:server": "turbo dev --filter=@love-restaurant/server",
+    "build": "turbo build",
+    "build:app": "turbo build --filter=@love-restaurant/app",
+    "build:server": "turbo build --filter=@love-restaurant/server",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "clean": "turbo clean"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.2.0"
+}

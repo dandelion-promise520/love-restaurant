@@ -1,0 +1,12 @@
+node_modules/
+*.db
+*.db-shm
+*.db-wal
+.next/
+.expo/
+dist/
+build/
+.turbo/
+package-lock.json
+bun.lock
+*.lock
