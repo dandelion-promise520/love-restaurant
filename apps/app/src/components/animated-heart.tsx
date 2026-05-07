@@ -1,6 +1,5 @@
 import { AntDesign } from "@expo/vector-icons";
 import { useEffect } from "react";
-
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -10,8 +9,6 @@ import Animated, {
   runOnJS,
   Easing,
 } from "react-native-reanimated";
-
-
 
 interface AnimatedHeartProps {
   startX: number;

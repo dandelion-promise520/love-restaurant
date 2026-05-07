@@ -46,7 +46,9 @@ export const userRoutes = new Elysia({ prefix: "/users" })
         set.status = 404;
         return { success: false, message: "未找到伴侣" };
       }
-      const partner = db.query("SELECT * FROM users WHERE id = ?").get(user.partner_id) as UserRow | undefined;
+      const partner = db.query("SELECT * FROM users WHERE id = ?").get(user.partner_id) as
+        | UserRow
+        | undefined;
       if (!partner) {
         set.status = 404;
         return { success: false, message: "伴侣不存在" };

@@ -19,7 +19,7 @@ export const RecipeList = ({ dishes, title }: RecipeListProps): JSX.Element => {
 
   const handleAddItem = (
     item: DishItemProps & { price: number },
-    event: { nativeEvent: { pageX: number; pageY: number } }
+    event: { nativeEvent: { pageX: number; pageY: number } },
   ) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
