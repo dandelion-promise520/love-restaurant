@@ -6,7 +6,7 @@ Turborepo monorepo 项目，包含 Expo 前端和 Elysia 后端。
 
 ## 技术栈
 
-### 前端 (apps/app)
+### 前端 (apps/native)
 
 - **Expo SDK 55** + React Native 0.83 + TypeScript (strict)
 - **NativeWind v5 preview** (Tailwind CSS for RN)
@@ -32,7 +32,7 @@ Turborepo monorepo 项目，包含 Expo 前端和 Elysia 后端。
 ```
 love-restaurant/
 ├── apps/
-│   ├── app/           # Expo 前端
+│   ├── native/        # Expo 前端
 │   └── server/        # Elysia 后端
 ├── packages/
 │   ├── shared/        # 共享类型、常量
@@ -48,12 +48,12 @@ bun install
 
 # 开发模式
 bun run dev              # 同时启动前后端
-bun run dev:app          # 仅前端
+bun run dev:native          # 仅前端
 bun run dev:server       # 仅后端
 
 # 构建
 bun run build            # 构建所有
-bun run build:app        # 仅前端
+bun run build:native        # 仅前端
 bun run build:server     # 仅后端
 
 # 代码检查与格式化
