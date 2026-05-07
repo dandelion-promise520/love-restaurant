@@ -1,6 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import { useEffect } from "react";
-import { Dimensions } from "react-native";
+
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -11,7 +11,7 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
+
 
 interface AnimatedHeartProps {
   startX: number;
@@ -65,6 +65,7 @@ export function AnimatedHeart({
         runOnJS(onComplete)();
       });
     }, 600);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => ({

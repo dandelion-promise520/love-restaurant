@@ -3,13 +3,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const CART_KEY = "love-restaurant-cart";
 
 export interface CartStorage {
-  items: Array<{
+  items: {
     dishId: string;
     name: string;
     price: number;
     quantity: number;
     image?: string;
-  }>;
+  }[];
   updatedAt: string;
 }
 

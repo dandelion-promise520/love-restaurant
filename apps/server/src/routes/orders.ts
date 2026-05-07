@@ -2,20 +2,31 @@ import { Elysia, t } from "elysia";
 
 import db from "../db";
 
+interface OrderRow {
+  id: string;
+  user_id: string;
+  total_price: number;
+  status: string;
+  note: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export const orderRoutes = new Elysia({ prefix: "/orders" })
   .get(
     "/",
     () => {
       const orders = db.query("SELECT * FROM orders ORDER BY created_at DESC").all();
-      const result = orders.map((order: any) => {
-        const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(order.id);
+      const result = orders.map((order: unknown) => {
+        const row = order as OrderRow;
+        const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(row.id);
         return {
-          ...order,
+          ...row,
           items,
-          createdAt: order.created_at,
-          updatedAt: order.updated_at,
-          userId: order.user_id,
-          totalPrice: order.total_price,
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+          userId: row.user_id,
+          totalPrice: row.total_price,
         };
       });
       return { success: true, data: result };
@@ -32,7 +43,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
     ({ body }) => {
       const id = `order_${Date.now()}`;
       const totalPrice = body.items.reduce(
-        (sum: number, item: any) => sum + item.price * item.quantity,
+        (sum: number, item: { price: number; quantity: number }) => sum + item.price * item.quantity,
         0,
       );
 
@@ -50,7 +61,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
         insertItem.run(id, item.dishId, item.name, item.price, item.quantity);
       }
 
-      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
+      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as OrderRow;
       const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(id);
 
       return {
@@ -87,7 +98,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
   .get(
     "/:id",
     ({ params: { id }, set }) => {
-      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
+      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as OrderRow | undefined;
       if (!order) {
         set.status = 404;
         return { success: false, message: "订单不存在" };
@@ -118,7 +129,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
   .patch(
     "/:id/status",
     ({ params: { id }, body, set }) => {
-      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
+      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as OrderRow | undefined;
       if (!order) {
         set.status = 404;
         return { success: false, message: "订单不存在" };
@@ -128,7 +139,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
         UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?
       `).run(body.status, id);
 
-      const updated = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
+      const updated = db.query("SELECT * FROM orders WHERE id = ?").get(id) as OrderRow;
       const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(id);
 
       return {

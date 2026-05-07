@@ -1,8 +1,17 @@
-import type { Dish, DishCategory } from "@love-restaurant/shared";
-
 import { Elysia, t } from "elysia";
 
 import db from "../db";
+
+interface DishRow {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  category: string;
+  image: string;
+  tags: string;
+  available: number;
+}
 
 export const dishRoutes = new Elysia({ prefix: "/dishes" })
   .get(
@@ -11,11 +20,14 @@ export const dishRoutes = new Elysia({ prefix: "/dishes" })
       const dishes = db.query("SELECT * FROM dishes WHERE available = 1").all();
       return {
         success: true,
-        data: dishes.map((d: any) => ({
-          ...d,
-          tags: JSON.parse(d.tags),
-          available: Boolean(d.available),
-        })),
+        data: dishes.map((d: unknown) => {
+          const row = d as DishRow;
+          return {
+            ...row,
+            tags: JSON.parse(row.tags),
+            available: Boolean(row.available),
+          };
+        }),
       };
     },
     {
@@ -28,7 +40,7 @@ export const dishRoutes = new Elysia({ prefix: "/dishes" })
   .get(
     "/:id",
     ({ params: { id }, set }) => {
-      const dish = db.query("SELECT * FROM dishes WHERE id = ?").get(id) as any;
+      const dish = db.query("SELECT * FROM dishes WHERE id = ?").get(id) as DishRow | undefined;
       if (!dish) {
         set.status = 404;
         return { success: false, message: "菜品不存在" };
@@ -60,11 +72,14 @@ export const dishRoutes = new Elysia({ prefix: "/dishes" })
         .all(category);
       return {
         success: true,
-        data: dishes.map((d: any) => ({
-          ...d,
-          tags: JSON.parse(d.tags),
-          available: Boolean(d.available),
-        })),
+        data: dishes.map((d: unknown) => {
+          const row = d as DishRow;
+          return {
+            ...row,
+            tags: JSON.parse(row.tags),
+            available: Boolean(row.available),
+          };
+        }),
       };
     },
     {

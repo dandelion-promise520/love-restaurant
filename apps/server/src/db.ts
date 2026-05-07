@@ -52,7 +52,7 @@ db.exec(`
 `);
 
 // 初始化菜品数据
-const dishCount = db.query("SELECT COUNT(*) as count FROM dishes").get() as any;
+const dishCount = db.query("SELECT COUNT(*) as count FROM dishes").get() as { count: number };
 if (dishCount.count === 0) {
   const insertDish = db.prepare(`
     INSERT INTO dishes (id, name, description, price, category, image, tags, available)
@@ -168,7 +168,7 @@ if (dishCount.count === 0) {
 }
 
 // 初始化用户数据
-const userCount = db.query("SELECT COUNT(*) as count FROM users").get() as any;
+const userCount = db.query("SELECT COUNT(*) as count FROM users").get() as { count: number };
 if (userCount.count === 0) {
   const insertUser = db.prepare(`
     INSERT INTO users (id, name, avatar, partner_id) VALUES (?, ?, ?, ?)

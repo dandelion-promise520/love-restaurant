@@ -6,7 +6,7 @@ import { Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import Animated from "react-native-reanimated";
 
 import boyAvatar from "@/assets/images/boy-avatar.jpg";
-import { DishItem, DishItemProps, PressableScale } from "@/components";
+import { PressableScale } from "@/components";
 import { useOrder } from "@/contexts/order-context";
 import { useCartAnimation } from "@/hooks/use-cart-animation";
 
@@ -34,12 +34,12 @@ export const OrderModal = () => {
     onItemAdded(() => {
       triggerJelly();
     });
-  }, [onItemAdded]);
+  }, [onItemAdded, triggerJelly]);
 
   // 监听 items 变化，触发背景色动画
   useEffect(() => {
     triggerBgColor(items.length > 0);
-  }, [items]);
+  }, [items, triggerBgColor]);
 
   const handleSubmit = async () => {
     if (items.length === 0) {

@@ -1,23 +1,26 @@
 import { AntDesign } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import { JSX, useRef, useState } from "react";
-import { Dimensions, FlatList, TouchableOpacity, View } from "react-native";
+import { Dimensions, FlatList, TouchableOpacity } from "react-native";
 
 import { ThemedText, ThemedView } from "@/components";
 import { AnimatedHeart } from "@/components/animated-heart";
 import { useOrder } from "@/contexts/order-context";
 
-import { DishItem } from "../../../../components/dish-item";
+import { DishItem, DishItemProps } from "../../../../components/dish-item";
 import { RecipeListProps } from "./types";
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 export const RecipeList = ({ dishes, title }: RecipeListProps): JSX.Element => {
   const { addItem } = useOrder();
-  const [hearts, setHearts] = useState<Array<{ id: number; x: number; y: number }>>([]);
+  const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
   const heartIdRef = useRef(0);
 
-  const handleAddItem = (item: any, event: any) => {
+  const handleAddItem = (
+    item: DishItemProps & { price: number },
+    event: { nativeEvent: { pageX: number; pageY: number } }
+  ) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     // 获取点击位置
