@@ -68,10 +68,7 @@ export const OrderModal = () => {
   return (
     <>
       <Animated.View
-        style={[
-          bgStyle,
-          jellyStyle,
-        ]}
+        style={[bgStyle, jellyStyle]}
         className="absolute bottom-[36] left-1/2 -translate-x-1/2 flex-row gap-[5] rounded-full p-2"
       >
         <PressableScale
@@ -117,14 +114,10 @@ export const OrderModal = () => {
                       borderRadius: 100,
                     }}
                   />
-                  <Text className="text-lg text-['#6B7280']">
-                    准备做{totalItems}道菜
-                  </Text>
+                  <Text className="text-lg text-['#6B7280']">准备做{totalItems}道菜</Text>
                 </View>
                 <View className="flex-row items-center gap-3">
-                  <Text className="text-lg font-bold text-['#F59E0B']">
-                    ¥{totalPrice}
-                  </Text>
+                  <Text className="text-lg font-bold text-['#F59E0B']">¥{totalPrice}</Text>
                   {items.length > 0 && (
                     <TouchableOpacity
                       onPress={handleClearCart}
@@ -208,9 +201,7 @@ export const OrderModal = () => {
                 >
                   <Text className="text-lg leading-tight">-</Text>
                 </TouchableOpacity>
-                <Text className="min-w-[24] text-center text-lg font-medium">
-                  {item.quantity}
-                </Text>
+                <Text className="min-w-[24] text-center text-lg font-medium">{item.quantity}</Text>
                 <TouchableOpacity
                   className="size-[28] items-center justify-center rounded-full border border-['#F59E0B']"
                   onPress={() => updateQuantity(item.dishId, item.quantity + 1)}

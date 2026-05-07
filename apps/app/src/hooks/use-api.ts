@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
-import { apiClient } from "@/lib/api-client";
-import { LOCAL_DISHES } from "@/data/local-dishes";
 import type { Dish, Order, User } from "@love-restaurant/shared";
+
+import { useState, useEffect, useCallback } from "react";
+
+import { LOCAL_DISHES } from "@/data/local-dishes";
+import { apiClient } from "@/lib/api-client";
 
 // 通用 hook 状态
 interface UseApiState<T> {
@@ -123,7 +125,7 @@ export function useCreateOrder() {
     async (
       items: { dishId: string; name: string; price: number; quantity: number }[],
       userId: string,
-      note?: string
+      note?: string,
     ) => {
       setLoading(true);
       setError(null);
@@ -137,7 +139,7 @@ export function useCreateOrder() {
 
       return result.data;
     },
-    []
+    [],
   );
 
   return { createOrder, loading, error };

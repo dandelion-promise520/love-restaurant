@@ -1,6 +1,6 @@
 /** @type { import('cz-git').UserConfig } */
 
-export default {
+module.exports = {
   extends: ["@commitlint/config-conventional"],
   rules: {
     // @see: https://commitlint.js.org/#/reference-rules
@@ -104,7 +104,7 @@ export default {
     useAI: false,
     aiNumber: 1,
     themeColorCode: "",
-    scopes: ["src", "config", "globle"],
+    scopes: ["native", "server", "globle"],
     allowCustomScopes: true,
     allowEmptyScopes: true,
     customScopesAlign: "bottom",

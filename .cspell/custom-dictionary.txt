@@ -12,3 +12,7 @@ Segoe
 Tamagui
 unistyles
 worklets
+AUTOINCREMENT
+Elysia
+elysia
+elysiajs

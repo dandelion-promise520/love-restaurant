@@ -9,7 +9,7 @@
       "addWords": true
     }
   ],
-  "files": ["src/**/*.ts", "src/**/*.tsx"],
+  "files": ["apps/**/src/**/*.{ts,tsx}", "packages/**/src/**/*.{ts,tsx}"],
   "ignorePaths": [
     "**/node_modules/**",
     "**/build/**",

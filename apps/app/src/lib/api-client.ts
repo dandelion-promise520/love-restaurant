@@ -1,10 +1,6 @@
+import type { Dish, Order, User, ApiResponse } from "@love-restaurant/shared";
+
 import { API_V1 } from "@love-restaurant/shared";
-import type {
-  Dish,
-  Order,
-  User,
-  ApiResponse,
-} from "@love-restaurant/shared";
 
 class ApiClient {
   private baseUrl: string;
@@ -13,10 +9,7 @@ class ApiClient {
     this.baseUrl = baseUrl;
   }
 
-  private async request<T>(
-    endpoint: string,
-    options: RequestInit = {}
-  ): Promise<ApiResponse<T>> {
+  private async request<T>(endpoint: string, options: RequestInit = {}): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
         headers: {
@@ -70,7 +63,7 @@ class ApiClient {
   async createOrder(
     items: { dishId: string; name: string; price: number; quantity: number }[],
     userId: string,
-    note?: string
+    note?: string,
   ): Promise<ApiResponse<Order>> {
     return this.request("/orders", {
       method: "POST",
@@ -78,10 +71,7 @@ class ApiClient {
     });
   }
 
-  async updateOrderStatus(
-    id: string,
-    status: Order["status"]
-  ): Promise<ApiResponse<Order>> {
+  async updateOrderStatus(id: string, status: Order["status"]): Promise<ApiResponse<Order>> {
     return this.request(`/orders/${id}/status`, {
       method: "PATCH",
       body: JSON.stringify({ status }),

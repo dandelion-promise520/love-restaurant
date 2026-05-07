@@ -1,10 +1,10 @@
+import { DISH_CATEGORY_LABELS } from "@love-restaurant/shared";
 import { useState, useMemo } from "react";
 import { ActivityIndicator } from "react-native";
 
 import { ThemedView, ThemedText } from "@/components";
 import { Colors } from "@/constants";
 import { useDishes } from "@/hooks/use-api";
-import { DISH_CATEGORY_LABELS } from "@love-restaurant/shared";
 
 import { MenuList, RecipeList, Title } from "./components";
 import { OrderModal } from "./components/order-modal";
@@ -82,9 +82,7 @@ export const Home = () => {
             description: d.description,
             price: d.price,
           }))}
-          title={
-            categories.find((item) => item.id === selectedCategory)?.title || ""
-          }
+          title={categories.find((item) => item.id === selectedCategory)?.title || ""}
         />
       </ThemedView>
 

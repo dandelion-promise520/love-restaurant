@@ -5,44 +5,43 @@
   "type": "module",
   "main": "expo/AppEntry",
   "scripts": {
-    "dev": "expo start",
     "build": "expo export --platform web",
-    "check": "bun fmt && bun lint:fix && bun spellcheck",
-    "commit": "git-cz",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
-    "prepare": "husky",
-    "spellcheck": "cspell",
+    "dev": "expo start",
+    "lint": "eslint .",
     "start": "expo start",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^20.4.2",
     "@expo/vector-icons": "^15.1.1",
     "@gorhom/bottom-sheet": "^5.2.8",
     "@legendapp/list": "^2.0.19",
-    "@love-restaurant/shared": "*",
-    "@react-native-async-storage/async-storage": "^3.0.2",
+    "@love-restaurant/shared": "workspace:*",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/core": "^7.17.2",
     "@react-navigation/elements": "^2.9.8",
     "@react-navigation/material-top-tabs": "^7.4.16",
     "@react-navigation/native": "^7.1.8",
-    "babel-plugin-module-resolver": "^5.0.2",
+    "ajv": "^8.20.0",
+    "events": "^3.3.0",
     "expo": "~55.0.18",
+    "expo-asset": "~55.0.17",
     "expo-constants": "~55.0.15",
     "expo-dev-client": "~55.0.28",
+    "expo-file-system": "~55.0.19",
     "expo-font": "~55.0.6",
     "expo-haptics": "~55.0.14",
     "expo-image": "~55.0.9",
     "expo-linear-gradient": "~55.0.13",
     "expo-linking": "~55.0.14",
+    "expo-modules-core": "^55.0.25",
     "expo-splash-screen": "~55.0.19",
     "expo-status-bar": "~55.0.5",
     "expo-symbols": "~55.0.7",
     "expo-system-ui": "~55.0.16",
     "expo-web-browser": "~55.0.14",
+    "invariant": "^2.2.4",
     "nativewind": "^5.0.0-preview.3",
+    "process": "^0.11.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-native": "0.83.6",
@@ -55,25 +54,19 @@
     "react-native-worklets": "0.7.4"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.29.2",
     "@tailwindcss/postcss": "^4.2.4",
     "@types/react": "~19.2.10",
-    "commitizen": "^4.3.1",
-    "cspell": "^10.0.0",
-    "cz-git": "^1.12.0",
-    "husky": "^9.1.7",
-    "oxfmt": "^0.35.0",
-    "oxlint": "^1.50.0",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~55.0.0",
     "postcss": "^8.5.12",
     "tailwindcss": "^4.2.4",
     "typescript": "~5.9.3"
   },
-  "overrides": {
+  "resolutions": {
     "lightningcss": "1.30.1"
   },
-  "config": {
-    "commitizen": {
-      "path": "cz-git",
-      "useEmoji": true
-    }
+  "overrides": {
+    "lightningcss": "1.30.1"
   }
 }

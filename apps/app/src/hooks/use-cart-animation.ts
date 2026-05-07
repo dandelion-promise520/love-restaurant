@@ -1,4 +1,10 @@
-import { useSharedValue, useAnimatedStyle, withSpring, withTiming, withSequence } from "react-native-reanimated";
+import {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  withSequence,
+} from "react-native-reanimated";
 
 export function useCartAnimation() {
   const jellyX = useSharedValue(0);
@@ -10,7 +16,7 @@ export function useCartAnimation() {
       withSpring(-10, { damping: 2, stiffness: 200 }),
       withSpring(10, { damping: 2, stiffness: 200 }),
       withSpring(-5, { damping: 2, stiffness: 200 }),
-      withSpring(0, { damping: 2, stiffness: 200 })
+      withSpring(0, { damping: 2, stiffness: 200 }),
     );
   };
 

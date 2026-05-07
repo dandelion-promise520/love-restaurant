@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "bun run --watch src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
+    "dev": "bun run --watch src/index.ts",
     "start": "bun run dist/index.js",
-    "lint": "eslint src/",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -14,12 +13,14 @@
     "@elysiajs/jwt": "^1.3.0",
     "@elysiajs/static": "^1.4.10",
     "@elysiajs/swagger": "^1.3.0",
-    "@love-restaurant/shared": "*",
+    "@love-restaurant/shared": "workspace:*",
+    "@sinclair/typebox": "0.34.28",
     "elysia": "^1.3.0"
   },
   "devDependencies": {
     "@types/bun": "^1.3.0",
     "bun": "^1.3.13",
+    "jose": "^6.2.3",
     "typescript": "^5.8.0"
   }
 }

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from "react";
+
 import { useCreateOrder } from "@/hooks/use-api";
 import { saveCart, loadCart, clearCartStorage } from "@/lib/storage";
 
@@ -58,9 +59,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
     setItems((prev) => {
       const existing = prev.find((i) => i.dishId === item.dishId);
       if (existing) {
-        return prev.map((i) =>
-          i.dishId === item.dishId ? { ...i, quantity: i.quantity + 1 } : i
-        );
+        return prev.map((i) => (i.dishId === item.dishId ? { ...i, quantity: i.quantity + 1 } : i));
       }
       return [...prev, { ...item, quantity: 1 }];
     });
@@ -79,9 +78,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
     if (quantity <= 0) {
       setItems((prev) => prev.filter((i) => i.dishId !== dishId));
     } else {
-      setItems((prev) =>
-        prev.map((i) => (i.dishId === dishId ? { ...i, quantity } : i))
-      );
+      setItems((prev) => prev.map((i) => (i.dishId === dishId ? { ...i, quantity } : i)));
     }
   }, []);
 
@@ -102,7 +99,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
           quantity: item.quantity,
         })),
         "1", // 默认用户 ID
-        note
+        note,
       );
 
       if (result) {
@@ -111,14 +108,11 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
       }
       return false;
     },
-    [items, createOrder, clearCart]
+    [items, createOrder, clearCart],
   );
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <OrderContext.Provider

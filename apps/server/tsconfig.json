@@ -1,21 +1,11 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "outDir": "./dist",
-    "rootDir": "./src",
     "paths": {
-      "@/*": ["./src/*"],
-      "@love-restaurant/shared": ["../../packages/shared/src"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts"],

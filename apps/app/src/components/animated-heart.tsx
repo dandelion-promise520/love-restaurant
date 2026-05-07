@@ -49,14 +49,14 @@ export function AnimatedHeart({
       withTiming(deltaY * 0.3, { duration: 150, easing: Easing.out(Easing.cubic) }),
       withSpring(deltaY * 0.6, { damping: 2, stiffness: 100 }),
       withSpring(deltaY * 0.8, { damping: 2, stiffness: 100 }),
-      withSpring(deltaY, { damping: 2, stiffness: 100 })
+      withSpring(deltaY, { damping: 2, stiffness: 100 }),
     );
 
     // 缩放效果
     scale.value = withSequence(
       withTiming(1.2, { duration: 100 }),
       withTiming(0.8, { duration: 100 }),
-      withTiming(1, { duration: 100 })
+      withTiming(1, { duration: 100 }),
     );
 
     // 动画完成后淡出

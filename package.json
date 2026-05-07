@@ -2,21 +2,50 @@
   "name": "love-restaurant",
   "version": "0.1.0",
   "private": true,
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "turbo dev",
-    "dev:app": "turbo dev --filter=@love-restaurant/app",
-    "dev:server": "turbo dev --filter=@love-restaurant/server",
     "build": "turbo build",
     "build:app": "turbo build --filter=@love-restaurant/app",
     "build:server": "turbo build --filter=@love-restaurant/server",
-    "lint": "turbo lint",
-    "typecheck": "turbo typecheck",
+    "clean": "turbo clean",
+    "commit": "git-cz",
+    "dev": "turbo dev",
+    "dev:app": "turbo dev --filter=@love-restaurant/app",
+    "dev:server": "turbo dev --filter=@love-restaurant/server",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "prepare": "husky",
+    "spellcheck": "cspell",
     "test": "turbo test",
-    "clean": "turbo clean"
+    "typecheck": "turbo typecheck"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^20.4.2",
+    "@types/node": "^25.6.0",
+    "commitizen": "^4.3.1",
+    "cspell": "^10.0.0",
+    "cz-git": "^1.12.0",
+    "husky": "^9.1.7",
+    "oxfmt": "^0.35.0",
+    "oxlint": "^1.50.0",
     "turbo": "^2.5.0"
+  },
+  "resolutions": {
+    "lightningcss": "1.30.1"
+  },
+  "overrides": {
+    "lightningcss": "1.30.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-git",
+      "useEmoji": true
+    }
   },
   "engines": {
     "node": ">=18"

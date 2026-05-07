@@ -15,6 +15,7 @@
 **Objective:** 安装持久化存储所需的依赖包
 
 **Files:**
+
 - Modify: `apps/app/package.json`
 
 **Step 1: 安装依赖**
@@ -39,6 +40,7 @@ Expected: `"@react-native-async-storage/async-storage": "^x.x.x"`
 **Objective:** 封装 AsyncStorage 的读写操作
 
 **Files:**
+
 - Create: `apps/app/src/lib/storage.ts`
 
 **Step 1: 创建存储工具**
@@ -107,11 +109,13 @@ Expected: 文件内容正确显示
 **Objective:** 在购物车状态管理中集成 AsyncStorage
 
 **Files:**
+
 - Modify: `apps/app/src/contexts/order-context.tsx`
 
 **Step 1: 添加导入**
 
 在文件顶部添加：
+
 ```typescript
 import { saveCart, loadCart, clearCartStorage } from "@/lib/storage";
 ```
@@ -168,6 +172,7 @@ Expected: 显示所有导入和使用位置
 **Objective:** 在购物车列表中显示菜品缩略图
 
 **Files:**
+
 - Modify: `apps/app/src/features/home/components/order-modal/OrderModal.tsx`
 
 **Step 1: 修改 renderItem 函数**
@@ -248,6 +253,7 @@ Expected: 显示图片相关代码
 **Objective:** 构建前端并验证功能
 
 **Files:**
+
 - None
 
 **Step 1: 构建前端**

@@ -1,15 +1,15 @@
 import { Elysia, t } from "elysia";
+
 import db from "../db";
 
 export const userRoutes = new Elysia({ prefix: "/users" })
   .get(
     "/:id",
-    ({ params: { id }, error }) => {
-      const user = db
-        .query("SELECT * FROM users WHERE id = ?")
-        .get(id) as any;
+    ({ params: { id }, set }) => {
+      const user = db.query("SELECT * FROM users WHERE id = ?").get(id) as any;
       if (!user) {
-        return error(404, { success: false, message: "用户不存在" });
+        set.status = 404;
+        return { success: false, message: "用户不存在" };
       }
       return {
         success: true,
@@ -28,20 +28,17 @@ export const userRoutes = new Elysia({ prefix: "/users" })
         tags: ["用户"],
         summary: "获取用户信息",
       },
-    }
+    },
   )
   .get(
     "/:id/partner",
-    ({ params: { id }, error }) => {
-      const user = db
-        .query("SELECT * FROM users WHERE id = ?")
-        .get(id) as any;
+    ({ params: { id }, set }) => {
+      const user = db.query("SELECT * FROM users WHERE id = ?").get(id) as any;
       if (!user || !user.partner_id) {
-        return error(404, { success: false, message: "未找到伴侣" });
+        set.status = 404;
+        return { success: false, message: "未找到伴侣" };
       }
-      const partner = db
-        .query("SELECT * FROM users WHERE id = ?")
-        .get(user.partner_id) as any;
+      const partner = db.query("SELECT * FROM users WHERE id = ?").get(user.partner_id) as any;
       return {
         success: true,
         data: {
@@ -59,5 +56,5 @@ export const userRoutes = new Elysia({ prefix: "/users" })
         tags: ["用户"],
         summary: "获取伴侣信息",
       },
-    }
+    },
   );

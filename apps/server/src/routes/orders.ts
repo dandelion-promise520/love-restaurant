@@ -1,36 +1,39 @@
 import { Elysia, t } from "elysia";
+
 import db from "../db";
 
 export const orderRoutes = new Elysia({ prefix: "/orders" })
-  .get("/", () => {
-    const orders = db.query("SELECT * FROM orders ORDER BY created_at DESC").all();
-    const result = orders.map((order: any) => {
-      const items = db
-        .query("SELECT * FROM order_items WHERE order_id = ?")
-        .all(order.id);
-      return {
-        ...order,
-        items,
-        createdAt: order.created_at,
-        updatedAt: order.updated_at,
-        userId: order.user_id,
-        totalPrice: order.total_price,
-      };
-    });
-    return { success: true, data: result };
-  }, {
-    detail: {
-      tags: ["订单"],
-      summary: "获取所有订单",
+  .get(
+    "/",
+    () => {
+      const orders = db.query("SELECT * FROM orders ORDER BY created_at DESC").all();
+      const result = orders.map((order: any) => {
+        const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(order.id);
+        return {
+          ...order,
+          items,
+          createdAt: order.created_at,
+          updatedAt: order.updated_at,
+          userId: order.user_id,
+          totalPrice: order.total_price,
+        };
+      });
+      return { success: true, data: result };
     },
-  })
+    {
+      detail: {
+        tags: ["订单"],
+        summary: "获取所有订单",
+      },
+    },
+  )
   .post(
     "/",
-    ({ body, error }) => {
+    ({ body }) => {
       const id = `order_${Date.now()}`;
       const totalPrice = body.items.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
+        (sum: number, item: any) => sum + item.price * item.quantity,
+        0,
       );
 
       db.prepare(`
@@ -48,9 +51,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
       }
 
       const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
-      const items = db
-        .query("SELECT * FROM order_items WHERE order_id = ?")
-        .all(id);
+      const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(id);
 
       return {
         success: true,
@@ -72,7 +73,7 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
             name: t.String(),
             price: t.Number(),
             quantity: t.Number(),
-          })
+          }),
         ),
         userId: t.String(),
         note: t.Optional(t.String()),
@@ -81,20 +82,17 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
         tags: ["订单"],
         summary: "创建新订单",
       },
-    }
+    },
   )
   .get(
     "/:id",
-    ({ params: { id }, error }) => {
-      const order = db
-        .query("SELECT * FROM orders WHERE id = ?")
-        .get(id) as any;
+    ({ params: { id }, set }) => {
+      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
       if (!order) {
-        return error(404, { success: false, message: "订单不存在" });
+        set.status = 404;
+        return { success: false, message: "订单不存在" };
       }
-      const items = db
-        .query("SELECT * FROM order_items WHERE order_id = ?")
-        .all(id);
+      const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(id);
       return {
         success: true,
         data: {
@@ -115,28 +113,23 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
         tags: ["订单"],
         summary: "根据 ID 获取订单",
       },
-    }
+    },
   )
   .patch(
     "/:id/status",
-    ({ params: { id }, body, error }) => {
-      const order = db
-        .query("SELECT * FROM orders WHERE id = ?")
-        .get(id) as any;
+    ({ params: { id }, body, set }) => {
+      const order = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
       if (!order) {
-        return error(404, { success: false, message: "订单不存在" });
+        set.status = 404;
+        return { success: false, message: "订单不存在" };
       }
 
       db.prepare(`
         UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?
       `).run(body.status, id);
 
-      const updated = db
-        .query("SELECT * FROM orders WHERE id = ?")
-        .get(id) as any;
-      const items = db
-        .query("SELECT * FROM order_items WHERE order_id = ?")
-        .all(id);
+      const updated = db.query("SELECT * FROM orders WHERE id = ?").get(id) as any;
+      const items = db.query("SELECT * FROM order_items WHERE order_id = ?").all(id);
 
       return {
         success: true,
@@ -168,5 +161,5 @@ export const orderRoutes = new Elysia({ prefix: "/orders" })
         tags: ["订单"],
         summary: "更新订单状态",
       },
-    }
+    },
   );

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["import", "react"],
+  "plugins": ["import"],
   "categories": {
     "correctness": "off"
   },
@@ -47,24 +47,7 @@
     "use-isnan": "error",
     "valid-typeof": "error",
     "import/first": "warn",
-    "no-var": "error",
-    "react/display-name": "error",
-    "react/jsx-key": "error",
-    "react/jsx-no-comment-textnodes": "error",
-    "react/jsx-no-duplicate-props": "error",
-    "react/jsx-no-undef": "error",
-    "react/no-children-prop": "error",
-    "react/no-danger-with-children": "error",
-    "react/no-direct-mutation-state": "error",
-    "react/no-find-dom-node": "error",
-    "react/no-is-mounted": "error",
-    "react/no-render-return-value": "error",
-    "react/no-string-refs": "error",
-    "react/no-unescaped-entities": "error",
-    "react/no-unknown-property": "warn",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/no-this-in-sfc": "warn"
+    "no-var": "error"
   },
   "globals": {
     "exports": "readonly",
@@ -85,16 +68,40 @@
     "setImmediate": "readonly",
     "shared-node-browser": "writable"
   },
-  "ignorePatterns": ["android/app/build", "dist/*"],
+  "ignorePatterns": ["android/app/build", "dist", "dist/*", "node_modules", "out", ".expo"],
   "overrides": [
     {
-      "files": ["**/metro.config.js"],
+      "files": ["**/metro.config.js", "**/metro.config.cjs", "**/*.config.cjs"],
       "env": {
         "node": true
       }
     },
     {
+      "files": ["apps/app/**/*.ts", "apps/app/**/*.tsx", "apps/app/**/*.jsx", "apps/app/**/*.js"],
+      "plugins": ["react"],
+      "rules": {
+        "react/display-name": "error",
+        "react/jsx-key": "error",
+        "react/jsx-no-comment-textnodes": "error",
+        "react/jsx-no-duplicate-props": "error",
+        "react/jsx-no-undef": "error",
+        "react/no-children-prop": "error",
+        "react/no-danger-with-children": "error",
+        "react/no-direct-mutation-state": "error",
+        "react/no-find-dom-node": "error",
+        "react/no-is-mounted": "error",
+        "react/no-render-return-value": "error",
+        "react/no-string-refs": "error",
+        "react/no-unescaped-entities": "error",
+        "react/no-unknown-property": "warn",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/no-this-in-sfc": "warn"
+      }
+    },
+    {
       "files": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
+      "plugins": ["typescript"],
       "rules": {
         "@typescript-eslint/array-type": [
           "warn",
@@ -123,10 +130,8 @@
             ]
           }
         ],
-        // allow using `any` in TS files — don't show warnings on it
-        "@typescript-eslint/no-explicit-any": "error"
-      },
-      "plugins": ["typescript"]
+        "@typescript-eslint/no-explicit-any": "warn"
+      }
     }
   ]
 }

@@ -6,7 +6,8 @@ export const LOCAL_DISHES = [
     description: "外酥里嫩，薄荷清香",
     price: 48,
     category: "house-special",
-    image: "https://images.pexels.com/photos/6646069/pexels-photo-6646069.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646069/pexels-photo-6646069.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["招牌", "必点"],
     available: true,
   },
@@ -16,7 +17,8 @@ export const LOCAL_DISHES = [
     description: "鲜美多汁，蒜蓉爆炒",
     price: 38,
     category: "house-special",
-    image: "https://images.pexels.com/photos/6646071/pexels-photo-6646071.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646071/pexels-photo-6646071.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["海鲜", "下酒"],
     available: true,
   },
@@ -26,7 +28,8 @@ export const LOCAL_DISHES = [
     description: "肥而不腻，入口即化",
     price: 42,
     category: "house-special",
-    image: "https://images.pexels.com/photos/6646075/pexels-photo-6646075.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646075/pexels-photo-6646075.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["肉类", "经典"],
     available: true,
   },
@@ -36,7 +39,8 @@ export const LOCAL_DISHES = [
     description: "经典川菜，麻辣鲜香",
     price: 36,
     category: "sichuan",
-    image: "https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["川菜", "经典"],
     available: true,
   },
@@ -46,7 +50,8 @@ export const LOCAL_DISHES = [
     description: "麻辣鲜香，下饭神器",
     price: 28,
     category: "sichuan",
-    image: "https://images.pexels.com/photos/6646062/pexels-photo-6646062.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646062/pexels-photo-6646062.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["川菜", "素菜"],
     available: true,
   },
@@ -56,7 +61,8 @@ export const LOCAL_DISHES = [
     description: "鲜嫩可口，清淡养身",
     price: 58,
     category: "cantonese",
-    image: "https://images.pexels.com/photos/6646073/pexels-photo-6646073.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646073/pexels-photo-6646073.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["粤菜", "海鲜"],
     available: true,
   },
@@ -66,7 +72,8 @@ export const LOCAL_DISHES = [
     description: "家常美味，宝宝最爱",
     price: 22,
     category: "baby-favorite",
-    image: "https://images.pexels.com/photos/6646072/pexels-photo-6646072.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646072/pexels-photo-6646072.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["家常", "宝宝"],
     available: true,
   },
@@ -76,7 +83,8 @@ export const LOCAL_DISHES = [
     description: "粒粒分明，香气扑鼻",
     price: 18,
     category: "baby-favorite",
-    image: "https://images.pexels.com/photos/6646074/pexels-photo-6646074.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646074/pexels-photo-6646074.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["主食", "宝宝"],
     available: true,
   },
@@ -86,7 +94,8 @@ export const LOCAL_DISHES = [
     description: "意式甜品，浓郁丝滑",
     price: 32,
     category: "dessert",
-    image: "https://images.pexels.com/photos/6646076/pexels-photo-6646076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646076/pexels-photo-6646076.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["甜品", "意式"],
     available: true,
   },
@@ -96,7 +105,8 @@ export const LOCAL_DISHES = [
     description: "香甜可口，Q弹珍珠",
     price: 15,
     category: "drink",
-    image: "https://images.pexels.com/photos/6646077/pexels-photo-6646077.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image:
+      "https://images.pexels.com/photos/6646077/pexels-photo-6646077.jpeg?auto=compress&cs=tinysrgb&w=400",
     tags: ["饮品", "奶茶"],
     available: true,
   },

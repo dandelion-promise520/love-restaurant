@@ -15,6 +15,7 @@
 **Objective:** 安装动画库依赖
 
 **Files:**
+
 - Modify: `apps/app/package.json`
 - Modify: `apps/app/babel.config.js`
 
@@ -54,12 +55,19 @@ Expected: `"react-native-reanimated": "^x.x.x"`
 **Objective:** 封装药丸动画逻辑
 
 **Files:**
+
 - Create: `apps/app/src/hooks/use-cart-animation.ts`
 
 **Step 1: 创建 hook**
 
 ```typescript
-import { useSharedValue, useAnimatedStyle, withSpring, withTiming, withSequence } from "react-native-reanimated";
+import {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  withSequence,
+} from "react-native-reanimated";
 
 export function useCartAnimation() {
   const jellyX = useSharedValue(0);
@@ -71,7 +79,7 @@ export function useCartAnimation() {
       withSpring(-10, { damping: 2, stiffness: 200 }),
       withSpring(10, { damping: 2, stiffness: 200 }),
       withSpring(-5, { damping: 2, stiffness: 200 }),
-      withSpring(0, { damping: 2, stiffness: 200 })
+      withSpring(0, { damping: 2, stiffness: 200 }),
     );
   };
 
@@ -116,6 +124,7 @@ Expected: 文件内容正确显示
 **Objective:** 实现爱心弹跳飞行动画
 
 **Files:**
+
 - Create: `apps/app/src/components/animated-heart.tsx`
 
 **Step 1: 创建组件**
@@ -233,11 +242,13 @@ Expected: 文件内容正确显示
 **Objective:** 在点餐按钮点击时触发爱心动画
 
 **Files:**
+
 - Modify: `apps/app/src/features/home/components/recipe-list/RecipeList.tsx`
 
 **Step 1: 添加导入**
 
 在文件顶部添加：
+
 ```typescript
 import { useRef, useState } from "react";
 import { AnimatedHeart } from "@/components/animated-heart";
@@ -247,6 +258,7 @@ import { useCartAnimation } from "@/hooks/use-cart-animation";
 **Step 2: 添加状态和 ref**
 
 在组件内部添加：
+
 ```typescript
 const [hearts, setHearts] = useState<Array<{ id: number; x: number; y: number }>>([]);
 const heartIdRef = useRef(0);
@@ -256,13 +268,14 @@ const pillRef = useRef<View>(null);
 **Step 3: 修改点餐按钮**
 
 找到 onPress 函数，修改为：
+
 ```typescript
 onPress={(event) => {
   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-  
+
   // 获取点击位置
   const { pageX, pageY } = event.nativeEvent;
-  
+
   // 添加爱心到列表
   const newHeart = {
     id: heartIdRef.current++,
@@ -270,7 +283,7 @@ onPress={(event) => {
     y: pageY,
   };
   setHearts((prev) => [...prev, newHeart]);
-  
+
   // 添加菜品到购物车
   addItem({
     dishId: item.id,
@@ -284,6 +297,7 @@ onPress={(event) => {
 **Step 4: 添加爱心动画渲染**
 
 在 FlatList 外部添加：
+
 ```typescript
 {hearts.map((heart) => (
   <AnimatedHeart
@@ -316,11 +330,13 @@ Expected: 显示动画相关代码
 **Objective:** 添加药丸抖动和背景色变化
 
 **Files:**
+
 - Modify: `apps/app/src/features/home/components/order-modal/OrderModal.tsx`
 
 **Step 1: 添加导入**
 
 在文件顶部添加：
+
 ```typescript
 import Animated from "react-native-reanimated";
 import { useCartAnimation } from "@/hooks/use-cart-animation";
@@ -329,6 +345,7 @@ import { useCartAnimation } from "@/hooks/use-cart-animation";
 **Step 2: 使用 hook**
 
 在组件内部添加：
+
 ```typescript
 const { jellyStyle, bgStyle, triggerJelly, triggerBgColor } = useCartAnimation();
 ```
@@ -344,6 +361,7 @@ useEffect(() => {
 **Step 4: 修改底部栏样式**
 
 找到底部栏组件，修改为：
+
 ```typescript
 <Animated.View
   style={[bgStyle, jellyStyle]}
@@ -368,6 +386,7 @@ Expected: 显示动画相关代码
 **Objective:** 构建前端并验证动画效果
 
 **Files:**
+
 - None
 
 **Step 1: 清理 Metro 缓存**

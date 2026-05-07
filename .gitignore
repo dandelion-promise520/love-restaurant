@@ -7,6 +7,3 @@ node_modules/
 dist/
 build/
 .turbo/
-package-lock.json
-bun.lock
-*.lock

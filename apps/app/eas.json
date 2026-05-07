@@ -5,14 +5,17 @@
   },
   "build": {
     "development": {
+      "bun": "1.2.0",
       "developmentClient": true,
       "distribution": "internal"
     },
     "preview": {
+      "bun": "1.2.0",
       "distribution": "internal",
       "android": { "buildType": "apk" }
     },
     "production": {
+      "bun": "1.2.0",
       "autoIncrement": true
     }
   },

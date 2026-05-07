@@ -8,8 +8,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import MapleMono from "@/assets/font/MapleMono-NF-CN-Medium.ttf";
-import { TabsLayout } from "@/layouts";
 import { OrderProvider } from "@/contexts/order-context";
+import { TabsLayout } from "@/layouts";
 
 const App = () => {
   // 夜间模式还是白天模式
@@ -32,7 +32,7 @@ const App = () => {
   return (
     <>
       {/* 状态栏 */}
-      <StatusBar style={scheme === "dark" ? "dark" : "dark"} />
+      <StatusBar style={scheme === "dark" ? "light" : "dark"} />
 
       {/* 导航容器 */}
       <NavigationContainer>

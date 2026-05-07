@@ -9,20 +9,16 @@
     "__DEV__": "readonly"
   },
   "rules": {
-    // React
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
     "react/prop-types": "off",
 
-    // Hooks
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
-    // TypeScript
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
 
-    // 通用
     "no-console": "warn",
     "no-debugger": "error"
   },
@@ -30,9 +26,13 @@
     "out",
     "dist",
     "pnpm-lock.yaml",
+    "bun.lockb",
+    "bun.lock",
     "LICENSE.md",
     "tsconfig.json",
-    "tsconfig.*.json"
+    "tsconfig.*.json",
+    "node_modules",
+    ".expo"
   ],
   "experimentalTailwindcss": {},
 
